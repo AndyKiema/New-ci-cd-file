@@ -32,7 +32,7 @@ jobs:
       # Run Postman tests using Newman
       - name: Run Postman tests using Newman
         run: |
-          newman run "PROJECT_RESOLVE.postman_collection.json"
+          newman run "Practice for CICD.postman_collection.json"
 
       # Upload the test report as an artifact
       - name: Upload Test Report
