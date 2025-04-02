@@ -34,7 +34,7 @@ jobs:
         run: |
           newman run "Practice for CICD.postman_collection.json"
 
-      # Upload the test report as an artifact
+      # Upload the test report
       - name: Upload Test Report
         uses: actions/upload-artifact@v4
         with:
