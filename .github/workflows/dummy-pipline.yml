@@ -39,4 +39,4 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: dummytest-report
-          path: C:\Users\Administrator\Desktop\Anotherone\Dummyreport.html
+          path: C:\Users\Administrator\Desktop\Anotherone\Dummy
