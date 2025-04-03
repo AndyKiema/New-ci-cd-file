@@ -19,7 +19,7 @@ jobs:
       - name: Confirm Repository Checkout
         run: |
           echo "📦 Checkout repository"
-          if ( $? -eq 0 ){
+          if ($LASTEXITCODE -eq 0){
             echo "✅ Repository checked out successfully!"
           }else{
             echo "❌ Failed to check out repository!" 
@@ -74,7 +74,7 @@ jobs:
       - name: Confirm Report Upload
         run: |
             echo "📦 Upload confirmation"
-            if ($? -eq 0){
+            if ($LASTEXITCODE -eq 0){
               echo "✅ Test report uploaded successfully!"
             }else{
               echo "❌ Failed to upload test report!" 
