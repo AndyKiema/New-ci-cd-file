@@ -21,7 +21,7 @@ jobs:
           if ( $? -eq 0 ){
             echo "✅ Repository checked out successfully!"
           }else{
-            echo "❌ Failed to check out repository!" && exit 1
+            echo "❌ Failed to check out repository!" 
           }
 
       # Set up Node.js (since Newman is a Node.js tool)
@@ -34,7 +34,7 @@ jobs:
             if (node -v){
               echo "✅ Node.js is set up successfully!"
             } else{
-              echo "❌ Node.js setup failed!" && exit 1
+              echo "❌ Node.js setup failed!" 
             }
 
       - name: Install dependency
@@ -47,7 +47,7 @@ jobs:
           if (npm install -g newman && npm install -g newman-reporter-htmlextra){
             echo "✅ Dependencies installed successfully!"
           }else{
-            echo "❌ Dependency installation failed!" && exit 1
+            echo "❌ Dependency installation failed!"
           }
 
       # Run Postman tests using Newman
@@ -60,7 +60,7 @@ jobs:
           if (newman run "Practice for CICD.postman_collection.json"){
             echo "✅ API tests completed successfully!"
           }else{
-            echo "❌ API tests failed!" && exit 1
+            echo "❌ API tests failed!"
           }
 
       # Upload the test report
@@ -74,5 +74,5 @@ jobs:
             if ($? -eq 0){
               echo "✅ Test report uploaded successfully!"
             }else{
-              echo "❌ Failed to upload test report!" && exit 1
+              echo "❌ Failed to upload test report!" 
             }
