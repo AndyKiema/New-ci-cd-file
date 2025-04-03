@@ -16,13 +16,7 @@ jobs:
       # Checkout the repository
       - name: Checkout repository
         uses: actions/checkout@v3
-      - name: Confirm Repository Checkout
-        run: |
-          if [ $? -eq 0 ]; then
-            echo "✅ Repository checked out successfully!"
-          else
-            echo "❌ Failed to check out repository!" && exit 1
-          fi
+      
 
       # Set up Node.js (since Newman is a Node.js tool)
       - name: Set up Node.js
@@ -69,10 +63,3 @@ jobs:
         with:
           name: dummytest-report
           path: Dummy.html
-      - name: Confirm Report Upload
-        run: |
-            if [ $? -eq 0 ]; then
-              echo "✅ Test report uploaded successfully!"
-            else
-              echo "❌ Failed to upload test report!" && exit 1
-            fi
