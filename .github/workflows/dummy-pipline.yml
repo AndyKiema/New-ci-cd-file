@@ -17,7 +17,7 @@ jobs:
       - name: Confirm Repository Checkout
         run: |
           echo "📦 Checkout repository"
-          actions/checkout@v3
+          uses actions/checkout@v3
           if ($LASTEXITCODE -eq 0){
             echo "✅ Repository checked out successfully!"
           }else{
