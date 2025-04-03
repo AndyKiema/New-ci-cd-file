@@ -35,20 +35,17 @@ jobs:
       # Install dependencies
       - name: Install dependencies
         run: |
-          echo "📦 Installing Newman and reporters..."
+          "Installing Newman and reporters..."
           npm install -g newman
           npm install -g newman-reporter-htmlextra
-          echo "✅ Dependencies installed successfully!"
+          "Dependencies installed successfully!"
 
       # Run Postman tests using Newman with detailed logs
       - name: Run Postman tests using Newman
         run: |
-          echo "🧪 Running API tests..."
-          newman run "Practice for CICD.postman_collection.json" \
-            --reporters cli,htmlextra \
-            --reporter-htmlextra-export Dummy.html \
-            --verbose | tee newman-log.txt
-          echo "✅ API tests completed! Report generated."
+          "Running API tests..."
+           newman run "Practice for CICD.postman_collection.json"
+          "API tests completed! Report generated."
 
       # Upload the test report
       - name: Upload Test Report
@@ -57,7 +54,7 @@ jobs:
           name: dummytest-report
           path: Dummy.html
       - name: Confirm Report Upload
-        run: echo "✅ Test report uploaded successfully!"
+        run: "Test report uploaded successfully!"
 
       # Upload Newman logs for debugging
       - name: Upload Newman Logs
@@ -66,4 +63,4 @@ jobs:
           name: newman-logs
           path: newman-log.txt
       - name: Confirm Log Upload
-        run: echo "✅ Logs uploaded successfully! CI/CD process complete. 🎉"
+        run: "Logs uploaded successfully! CI/CD process complete."
