@@ -13,26 +13,42 @@ jobs:
     runs-on: windows-latest  # Use a Windows environment for running the tests
 
     steps:
+      - name: Start CI/CD Pipeline
+        run: echo "🚀 CI/CD pipeline started for API tests..."
+
       # Checkout the repository
       - name: Checkout repository
         uses: actions/checkout@v3
+      - name: Confirm Repository Checkout
+        run: echo "✅ Repository checked out successfully!"
 
-      # Set up Node.js (since Newman is a Node.js tool)
+      # Set up Node.js
       - name: Set up Node.js
         uses: actions/setup-node@v3
         with:
           node-version: '16'  # Specify the version of Node.js you want 
-
-      - name: Install dependency
+      - name: Confirm Node.js Setup
         run: |
-            npm install -g newman
-            npm install -g newman-reporter-htmlextra
+          node -v
+          echo "✅ Node.js is set up successfully!"
 
+      # Install dependencies
+      - name: Install dependencies
+        run: |
+          echo "📦 Installing Newman and reporters..."
+          npm install -g newman
+          npm install -g newman-reporter-htmlextra
+          echo "✅ Dependencies installed successfully!"
 
-      # Run Postman tests using Newman
+      # Run Postman tests using Newman with detailed logs
       - name: Run Postman tests using Newman
         run: |
-          newman run "Practice for CICD.postman_collection.json"
+          echo "🧪 Running API tests..."
+          newman run "Practice for CICD.postman_collection.json" \
+            --reporters cli,htmlextra \
+            --reporter-htmlextra-export Dummy.html \
+            --verbose | tee newman-log.txt
+          echo "✅ API tests completed! Report generated."
 
       # Upload the test report
       - name: Upload Test Report
@@ -40,3 +56,14 @@ jobs:
         with:
           name: dummytest-report
           path: Dummy.html
+      - name: Confirm Report Upload
+        run: echo "✅ Test report uploaded successfully!"
+
+      # Upload Newman logs for debugging
+      - name: Upload Newman Logs
+        uses: actions/upload-artifact@v4
+        with:
+          name: newman-logs
+          path: newman-log.txt
+      - name: Confirm Log Upload
+        run: echo "✅ Logs uploaded successfully! CI/CD process complete. 🎉"
