@@ -56,11 +56,3 @@ jobs:
       - name: Confirm Report Upload
         run: "Test report uploaded successfully!"
 
-      # Upload Newman logs for debugging
-      - name: Upload Newman Logs
-        uses: actions/upload-artifact@v4
-        with:
-          name: newman-logs
-          path: newman-log.txt
-      - name: Confirm Log Upload
-        run: "Logs uploaded successfully! CI/CD process complete."
