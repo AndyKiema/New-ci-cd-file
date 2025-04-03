@@ -18,6 +18,7 @@ jobs:
         uses: actions/checkout@v3
       - name: Confirm Repository Checkout
         run: |
+          echo "📦 Checkout repository"
           if ( $? -eq 0 ){
             echo "✅ Repository checked out successfully!"
           }else{
@@ -31,6 +32,7 @@ jobs:
           node-version: '16'  # Specify the version of Node.js you want 
       - name: Confirm Node.js Setup
         run: |
+            echo "📦 Node setup"
             if (node -v){
               echo "✅ Node.js is set up successfully!"
             } else{
@@ -71,6 +73,7 @@ jobs:
           path: Dummy.html
       - name: Confirm Report Upload
         run: |
+            echo "📦 Upload confirmation"
             if ($? -eq 0){
               echo "✅ Test report uploaded successfully!"
             }else{
