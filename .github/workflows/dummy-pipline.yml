@@ -47,7 +47,7 @@ jobs:
            newman run "Practice for CICD.postman_collection.json"
           "API tests completed! Report generated."
 
-      # Upload the test report
+      # Upload test report
       - name: Upload Test Report
         uses: actions/upload-artifact@v4
         with:
