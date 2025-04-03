@@ -14,15 +14,12 @@ jobs:
 
     steps:
       # Checkout the repository
-      - name: Confirm Repository Checkout
+      - name: Checkout repository and confirm
+        uses: actions/checkout@v3
+      - name: Check checkout success
         run: |
-          echo "📦 Checkout repository"
-          uses actions/checkout@v3
-          if ($LASTEXITCODE -eq 0){
-            echo "✅ Repository checked out successfully!"
-          }else{
-            echo "❌ Failed to check out repository!" 
-          }
+          echo "Checking for successful checkout"
+          echo "checkout step completed."
 
       # Set up Node.js (since Newman is a Node.js tool)
       - name: Set up Node.js
@@ -65,17 +62,11 @@ jobs:
           }
 
       # Upload the test report
-      - name: Upload Test Report and Confirm
+      - name: Upload Test Report
+        uses: actions/upload-artifact@v4
+        with:
+          name: dummytest-report
+          path: Dummy.html
+      - name: Confirm Report Upload
         run: |
-           echo "📦 Uploading Test Report"
-           uses actions/upload-artifact@v4
-           with:
-             name: dummytest-report
-             path: Dummy.html
-           if ($LASTEXITCODE -eq 0) {
-             echo "✅ Test report uploaded successfully!"
-             } else {
-             echo "❌ Failed to upload test report!"
-             }
-            
-        
+            echo "📦 Report uploaded"
